@@ -1,7 +1,7 @@
 (() => {
   const mainDiv = document.querySelector(".main-div");
-  const movieBox = document.querySelector("#character-box");
-  const reviewTemplate = document.querySelector("#movie-template");
+  const characterBox = document.querySelector("#character-box");
+  const filmTemplate = document.querySelector("#movie-template");
   const filmCon = document.querySelector("#film-con");
   const baseUrl = `https://swapi.dev/api/people/`;
 
@@ -25,7 +25,7 @@
           li.appendChild(a);
           ul.appendChild(li);
         });
-        movieBox.appendChild(ul);
+        characterBox.appendChild(ul);
       })
       .then(function () {
         const links = document.querySelectorAll("#character-box li a");
@@ -38,8 +38,10 @@
           "You don't have internet or your internet is slow, try again later.",
           error
         );
+        mainDiv.classList.add("error-style");
+        mainDiv.classList.remove("grid-con");
         mainDiv.innerHTML =
-          "Failed to load. Some data requirements failed to load. Please try again later.";
+          "Error.<br>Some data requirements failed to load.<br>Please try again later.";
       });
   }
   function getFilm(e) {
@@ -51,7 +53,7 @@
       .then(function (response) {
         filmCon.innerHTML = "";
 
-        const template = document.importNode(reviewTemplate.content, true);
+        const template = document.importNode(filmTemplate.content, true);
 
         const reviewBody = template.querySelector(".review-description");
         const movieTitle = template.querySelector(".movie-title");
