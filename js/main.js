@@ -1,7 +1,8 @@
 (() => {
+  const mainDiv = document.querySelector(".main-div");
   const movieBox = document.querySelector("#character-box");
   const reviewTemplate = document.querySelector("#movie-template");
-  const reviewCon = document.querySelector("#review-con");
+  const filmCon = document.querySelector("#film-con");
   const baseUrl = `https://swapi.dev/api/people/`;
 
   function getMovies() {
@@ -28,22 +29,26 @@
       .then(function () {
         const links = document.querySelectorAll("#character-box li a");
         links.forEach((link) => {
-          link.addEventListener("click", getReview);
+          link.addEventListener("click", getFilm);
         });
       })
       .catch((error) => {
-        console.log(error);
-        //ideally we would write to the DOM and let user know,something is wrong
+        console.error(
+          "You don't have internet or your internet is slow, try again later.",
+          error
+        );
+        mainDiv.innerHTML =
+          "Failed to load. Some data requirements failed to load. Please try again later.";
       });
   }
-  function getReview(e) {
-    const reviewID = e.currentTarget.dataset.film;
+  function getFilm(e) {
+    const filmID = e.currentTarget.dataset.film;
     //https://swapi.dev/api/films/1/
 
-    fetch(`${reviewID}`)
+    fetch(`${filmID}`)
       .then((response) => response.json())
       .then(function (response) {
-        reviewCon.innerHTML = "";
+        filmCon.innerHTML = "";
 
         const template = document.importNode(reviewTemplate.content, true);
 
@@ -54,10 +59,15 @@
         reviewBody.innerHTML = response.opening_crawl;
 
         // reviewBody.innerHTML = response.title;
-        reviewCon.appendChild(template);
+        filmCon.appendChild(template);
       })
       .catch((error) => {
-        console.log(error);
+        console.error(
+          "You don't have internet or your internet is slow, try again later.",
+          error
+        );
+
+        mainDiv.innerHTML = "Failed to load content. Please try again.";
       });
   }
 
