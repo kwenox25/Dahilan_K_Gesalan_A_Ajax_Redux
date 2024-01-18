@@ -1,0 +1,9 @@
+@use "../abstracts" as a;
+#film-box {
+  margin-top: 20px;
+  background-color: red;
+  height: 95vh;
+
+  color: a.$white-font;
+  padding: 20px;
+}
