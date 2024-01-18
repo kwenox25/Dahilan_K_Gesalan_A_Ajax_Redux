@@ -1,6 +1,6 @@
 # Star Wars Characters
 
-![Star Wars Characters](./images/starwars_banner.png "Star Wars Characters")
+![Star Wars Characters](./images/starwars_banner.jpg "Star Wars Characters")
 
 Welcome to the Star Wars Explorer, a simple website that lets you explore information about characters from the Star Wars universe using the SWAPI (https://swapi.dev/). With this application, users can click on characters to view the films and episodes in which they starred, along with a brief synopsis of each film.
 
