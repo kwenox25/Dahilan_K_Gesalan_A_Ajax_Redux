@@ -1,9 +1,15 @@
 @use "../abstracts" as a;
 
-.main-div {
+.error-style {
+  background: black;
+  color: a.$white-font;
+  display: flex;
+  font-family: a.$heading-font;
+  align-items: center;
+  font-size: a.$heading-size;
+  justify-content: center;
   height: 100vh;
 }
-
 #character-box {
   margin-top: 20px;
   background-color: a.$blue-bg;
