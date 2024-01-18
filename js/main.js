@@ -1,25 +1,24 @@
 (() => {
-  const movieBox = document.querySelector("#movie-box");
-  const reviewTemplate = document.querySelector("#review-template");
+  const movieBox = document.querySelector("#character-box");
+  const reviewTemplate = document.querySelector("#movie-template");
   const reviewCon = document.querySelector("#review-con");
-  const baseUrl = `https://search.imdbot.workers.dev`;
+  const baseUrl = `https://swapi.dev/api/people/`;
 
   function getMovies() {
-    fetch(`${baseUrl}?q=thor`)
+    fetch(`${baseUrl}?page=2`)
       .then((response) => response.json())
       .then(function (response) {
-        //  console.log(response.description);
-        const movies = response.description;
+        console.log(response.results);
+        const movies = response.results;
         const ul = document.createElement("ul");
         movies.forEach((movie) => {
-          //   console.log(movie["#TITLE"]);
-          //   console.log(movie["#IMDB_ID"]);
-
           const li = document.createElement("li");
           const a = document.createElement("a");
+          //  console.log(movie.name);
+          //console.log(movie.films[0]);
 
-          a.textContent = movie["#TITLE"];
-          a.dataset.review = movie["#IMDB_ID"];
+          a.textContent = movie["name"];
+          a.dataset.film = movie.films[1];
 
           li.appendChild(a);
           ul.appendChild(li);
@@ -27,7 +26,7 @@
         movieBox.appendChild(ul);
       })
       .then(function () {
-        const links = document.querySelectorAll("#movie-box li a");
+        const links = document.querySelectorAll("#character-box li a");
         links.forEach((link) => {
           link.addEventListener("click", getReview);
         });
@@ -37,24 +36,24 @@
         //ideally we would write to the DOM and let user know,something is wrong
       });
   }
-
   function getReview(e) {
-    // console.log("getReview Called");
-    //console.log(this.dataset.review);
-    const reviewID = e.currentTarget.dataset.review;
-    //https://search.imdbot.workers.dev/?tt=tt0145487
+    const reviewID = e.currentTarget.dataset.film;
+    //https://swapi.dev/api/films/1/
 
-    fetch(`${baseUrl}?tt=${reviewID}`)
+    fetch(`${reviewID}`)
       .then((response) => response.json())
       .then(function (response) {
         reviewCon.innerHTML = "";
-        console.log(response.short.review.reviewBody);
 
         const template = document.importNode(reviewTemplate.content, true);
 
         const reviewBody = template.querySelector(".review-description");
+        const movieTitle = template.querySelector(".movie-title");
 
-        reviewBody.innerHTML = response.short.review.reviewBody;
+        movieTitle.innerHTML = response.title;
+        reviewBody.innerHTML = response.opening_crawl;
+
+        // reviewBody.innerHTML = response.title;
         reviewCon.appendChild(template);
       })
       .catch((error) => {
