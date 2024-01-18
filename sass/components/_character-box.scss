@@ -1,0 +1,40 @@
+@use "../abstracts" as a;
+
+.main-div {
+  height: 100vh;
+}
+
+#character-box {
+  margin-top: 20px;
+  background-color: a.$blue-bg;
+  height: 95vh;
+  color: a.$white-font;
+  padding: 20px;
+}
+
+#character-box ul {
+  list-style: none;
+  padding: 20px;
+  font-family: a.$heading-font;
+}
+
+#character-box ul li {
+  margin-bottom: 20px;
+  color: a.$lighter-blue;
+}
+
+.character-link {
+  padding-bottom: 5px;
+  border-bottom: transparent solid 2px;
+  transition: border-bottom 0.5s ease;
+}
+
+.character-link:hover {
+  color: a.$white-font;
+  border-bottom-color: white;
+  transform: scaleX(1);
+}
+
+.character-link:hover {
+  transition: color 0.5s ease, border-bottom-color 0.5s ease;
+}

@@ -17,6 +17,7 @@
           const a = document.createElement("a");
           //  console.log(movie.name);
           //console.log(movie.films[0]);
+          a.classList.add("character-link");
 
           a.textContent = movie["name"];
           a.dataset.film = movie.films[0];
