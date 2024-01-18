@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Movie API - Marvel Characters Film</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;600&display=swap"
+      rel="stylesheet"
+    />
+    <link href="css/grid.css" rel="stylesheet" />
+    <link href="css/main.css" rel="stylesheet" />
+    <script defer src="js/main.js"></script>
+  </head>
+  <body>
+    <div class="grid-con">
+      <section class="col-span-full m-col-span-6" id="character-box">
+        <h2>Characters</h2>
+      </section>
+      <section class="col-span-full m-col-span-6" id="review-box">
+        <h2>Movie</h2>
+        <div id="review-con">
+          <!-- template will be inserted here -->
+        </div>
+        <template id="movie-template">
+          <section>
+            <h3 class="movie-title"></h3>
+            <p class="review-author"></p>
+            <p class="review-description"></p>
+          </section>
+        </template>
+      </section>
+    </div>
+  </body>
+</html>
