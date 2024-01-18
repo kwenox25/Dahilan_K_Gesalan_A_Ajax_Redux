@@ -18,7 +18,7 @@
           //console.log(movie.films[0]);
 
           a.textContent = movie["name"];
-          a.dataset.film = movie.films[1];
+          a.dataset.film = movie.films[0];
 
           li.appendChild(a);
           ul.appendChild(li);
