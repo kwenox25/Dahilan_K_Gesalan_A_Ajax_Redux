@@ -3,6 +3,7 @@
   const characterBox = document.querySelector("#character-box");
   const filmTemplate = document.querySelector("#movie-template");
   const filmCon = document.querySelector("#film-con");
+  const filmBox = document.querySelector("#film-box");
   const baseUrl = `https://swapi.dev/api/people/`;
 
   function getMovies() {
@@ -52,15 +53,18 @@
       .then((response) => response.json())
       .then(function (response) {
         filmCon.innerHTML = "";
+        //  filmBox.innerHTML = "";
 
         const template = document.importNode(filmTemplate.content, true);
 
         const reviewBody = template.querySelector(".review-description");
         const movieTitle = template.querySelector(".movie-title");
+        const img = document.createElement("img");
 
         movieTitle.innerHTML = response.title;
         reviewBody.innerHTML = response.opening_crawl;
-
+        img.src = `images/${response.episode_id}.jpg`;
+        template.appendChild(img);
         // reviewBody.innerHTML = response.title;
         filmCon.appendChild(template);
       })
@@ -69,8 +73,10 @@
           "You don't have internet or your internet is slow, try again later.",
           error
         );
-
-        mainDiv.innerHTML = "Failed to load content. Please try again.";
+        mainDiv.classList.add("error-style");
+        mainDiv.classList.remove("grid-con");
+        mainDiv.innerHTML =
+          "Error.<br>Some data requirements failed to load.<br>Please try again later.";
       });
   }
 
