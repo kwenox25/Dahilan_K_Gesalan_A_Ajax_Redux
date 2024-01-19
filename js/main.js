@@ -64,8 +64,8 @@
         movieTitle.innerHTML = response.title;
         reviewBody.innerHTML = response.opening_crawl;
         img.src = `images/${response.episode_id}.jpg`;
+
         template.appendChild(img);
-        // reviewBody.innerHTML = response.title;
         filmCon.appendChild(template);
       })
       .catch((error) => {
