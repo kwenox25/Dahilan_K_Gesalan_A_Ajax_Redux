@@ -3,7 +3,9 @@ a {
 }
 
 body {
-  background-image: url(/images/starwars_bg.png);
+  background-image: url("../images/gold-bg.png");
+  background-size: cover;
+  background-repeat: no-repeat;
 }
 
 img {
