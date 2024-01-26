@@ -4,16 +4,16 @@
   const filmTemplate = document.querySelector("#movie-template");
   const filmCon = document.querySelector("#film-con");
   const filmBox = document.querySelector("#film-box");
-  const baseUrl = `https://swapi.dev/api/people/`;
+  const baseUrl = `https://swapi.dev/api/`;
 
-  function getMovies() {
-    fetch(`${baseUrl}?page=2`)
+  function getCharacters() {
+    fetch(`${baseUrl}people/?page=2`)
       .then((response) => response.json())
       .then(function (response) {
         console.log(response.results);
-        const movies = response.results;
+        const character = response.results;
         const ul = document.createElement("ul");
-        movies.forEach((movie) => {
+        character.forEach((movie) => {
           const li = document.createElement("li");
           const a = document.createElement("a");
           //  console.log(movie.name);
@@ -80,5 +80,5 @@
       });
   }
 
-  getMovies();
+  getCharacters();
 })();
