@@ -50,11 +50,8 @@
   color: red;
   border-bottom-color: red;
   transform: scale(1.2);
+  transition: color 0.5s ease, border-bottom-color 0.5s ease;
 }
 .character-box a:hover {
   transform: scaleX(1.2);
-}
-
-.character-link:hover {
-  transition: color 0.5s ease, border-bottom-color 0.5s ease;
 }
