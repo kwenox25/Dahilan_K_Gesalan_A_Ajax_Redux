@@ -13,7 +13,7 @@
 #character-box {
   margin-top: 30px;
 
-  background-color: rgba(251, 216, 62, 0.6);
+  background-color: rgba(251, 216, 62, 0.5);
   height: 92vh;
   color: a.$white-font;
   padding: 40px;
@@ -27,6 +27,7 @@
     0% 90%,
     0% 10%
   );
+  position: relative;
 }
 
 #character-box ul {
@@ -41,17 +42,35 @@
 }
 
 .character-link {
-  padding-bottom: 5px;
-  border-bottom: transparent solid 2px;
-  transition: border-bottom 0.5s ease;
+  background-image: linear-gradient(to right, #a73d3d, #a73d3d 50%, #000 50%);
+  background-size: 200% 100%;
+  background-position: -100%;
+  display: inline-block;
+  padding: 5px 0;
+  position: relative;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  transition: all 0.3s ease-in-out;
+}
+
+.character-link:before {
+  content: "";
+  bottom: -3px;
+  left: 0;
+  width: 0;
+  height: 3px;
+  background: #a73d3d;
+  display: block;
+  position: absolute;
+
+  transition: all 0.3s ease-in-out;
 }
 
 .character-link:hover {
-  color: red;
-  border-bottom-color: red;
-  transform: scale(1.2);
-  transition: color 0.5s ease, border-bottom-color 0.5s ease;
+  background-position: 0;
+  font-weight: 700;
 }
-.character-box a:hover {
-  transform: scaleX(1.2);
+
+.character-link:hover::before {
+  width: 100%;
 }
