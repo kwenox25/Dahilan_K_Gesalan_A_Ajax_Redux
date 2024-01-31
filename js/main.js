@@ -107,6 +107,9 @@
 
   function removeSpinner() {
     characterBox.innerHTML = "";
+    const characterListHeading = document.createElement("h2");
+    characterListHeading.textContent = "Character List";
+    characterBox.appendChild(characterListHeading);
   }
 
   getCharacters();
