@@ -14,7 +14,7 @@
   margin-top: 30px;
 
   background-color: rgba(251, 216, 62, 0.5);
-  height: 90vh;
+  height: 95vh;
   color: a.$white-font;
   padding: 40px;
   clip-path: polygon(
@@ -73,4 +73,8 @@
 
 .character-link:hover::before {
   width: 100%;
+}
+
+h2 {
+  color: #000;
 }
